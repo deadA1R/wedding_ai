@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
   rsvpForm.appendChild(messageBox);
 
   if (!idName) {
-    inviteTextEl.textContent = "Гость не указан!";
+    inviteTextEl.textContent = "Дорогой Гость";
     rsvpForm.style.display = "none";
     return;
   }
