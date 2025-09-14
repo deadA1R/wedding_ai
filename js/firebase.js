@@ -200,6 +200,7 @@ addGuestForm.onsubmit = addGuestSubmitHandler;
 // ====== Сводная статистика ======
 const totalGuestsEl = document.getElementById("totalGuests");
 const confirmedGuestsEl = document.getElementById("confirmedGuests");
+const confirmedChildEl = document.getElementById("confirmedСhild");
 const singleGuestsEl = document.getElementById("singleGuests");
 const familyGuestsEl = document.getElementById("familyGuests");
 
@@ -207,13 +208,48 @@ const ctx = document.getElementById("guestChart").getContext("2d");
 let guestChart = null;
 
 function updateSummary(guests) {
-  const total = guests.length;
-  const confirmed = guests.filter(g => g.status === 'подтвердил').length;
-  const single = guests.filter(g => g.type === 'одиночка').length;
-  const family = guests.filter(g => g.type === 'семьянин').length;
+  let total = 0;
+  let confirmed = 0;
+  let confirmedChild = 0;
+  let confirmedAdult = 0;
+  let canAdult = 0;
+  let thinkAdult = 0;
+  let single = 0;
+  let family = 0;
+  let totalChildren = 0;
+
+  guests.forEach(g => {
+    const adults = g.guestsCount || 0;
+    const children = g.childrenCount || 0;
+    const guestCount = adults + children;
+
+    total += guestCount;
+    totalChildren += children;
+
+    if (g.status === 'подтвердил' || g.status === 'Буду') {
+      confirmed += guestCount;
+      confirmedChild += children;
+      confirmedAdult += adults;
+    }
+
+    if (g.status === 'Не буду') {
+      canAdult += adults+children;
+    }
+
+    if (g.status === 'В размышлениях') {
+      thinkAdult += adults+children;
+    }
+
+    if (g.type === 'одиночка') {
+      single += guestCount; // считаем именно кол-во людей
+    } else if (g.type === 'семьянин') {
+      family += guestCount;
+    }
+  });
 
   totalGuestsEl.innerText = total;
   confirmedGuestsEl.innerText = confirmed;
+  confirmedChildEl.innerText = confirmedChild;
   singleGuestsEl.innerText = single;
   familyGuestsEl.innerText = family;
 
@@ -223,11 +259,11 @@ function updateSummary(guests) {
   guestChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Одиночка', 'Семьянин'],
+      labels: ['Всего гостей', 'Подтвердили визит (взрослые)', 'Подтердили визит(дети)', "В размышлениях", "Отказ"],
       datasets: [{
         label: 'Количество гостей',
-        data: [single, family],
-        backgroundColor: ['#800020', '#c0392b'],
+        data: [total, confirmedAdult, confirmedChild, thinkAdult, canAdult],
+        backgroundColor: ['#800020', '#1c7538ff', '#199023ff', '#878787ff', "#7d0000ff"],
         borderRadius: 6
       }]
     },
@@ -249,6 +285,7 @@ function updateSummary(guests) {
   });
 }
 
+
 // ====== Получение гостей и обновление статистики ======
 db.collection("guests").onSnapshot(snapshot => {
   const guests = [];
@@ -260,4 +297,32 @@ db.collection("guests").onSnapshot(snapshot => {
   });
 
   updateSummary(guests); // обновляем сводные данные и график
+});
+
+document.getElementById("downloadExcel").addEventListener("click", () => {
+  // Пример: берем данные из массива guests
+  // guests = [{ name: "Иван", status: "Буду", guestsCount: 2, childrenCount: 1, type: "семьянин" }, ... ]
+  if (!window.guests || guests.length === 0) {
+    alert("Нет данных для выгрузки");
+    return;
+  }
+
+  // Формируем массив объектов для Excel
+  const dataForExcel = guests.map(g => ({
+    "Имя": g.name || "",
+    "Статус": g.status || "",
+    "Взрослые": g.guestsCount || 0,
+    "Дети": g.childrenCount || 0,
+    "Тип": g.type || ""
+  }));
+
+  // Создаем лист
+  const ws = XLSX.utils.json_to_sheet(dataForExcel);
+
+  // Создаем книгу
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Гости");
+
+  // Сохраняем файл
+  XLSX.writeFile(wb, "guests.xlsx");
 });

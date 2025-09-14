@@ -67,7 +67,7 @@ body {
 
 .names .initial {
   font-family: 'Great Vibes', cursive;
-  font-size: 1.2em; /* чуть больше, чем обычный текст */
+  font-size: 72; /* чуть больше, чем обычный текст */
   display: inline-block;
   margin-right: 5px;
 }
@@ -644,7 +644,7 @@ button:hover {
 /* ---------- Адаптив ---------- */
 @media (max-width: 768px) {
   .names {
-    font-size: 72px;
+    font-size: 66px;
   }
 
   .date {

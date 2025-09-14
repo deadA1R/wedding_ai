@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Админка свадьбы</title>
   <link rel="stylesheet" href="style_admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
   <!-- Экран входа -->
@@ -70,6 +72,10 @@
         <p id="confirmedGuests">0</p>
         </div>
         <div class="card">
+        <h3>Дети</h3>
+        <p id="confirmedСhild">0</p>
+        </div>
+        <div class="card">
         <h3>Одиночки</h3>
         <p id="singleGuests">0</p>
         </div>
@@ -106,6 +112,12 @@
         </section>
 
   </div>
+
+  <!-- Кнопка для выгрузки -->
+<!-- <button id="downloadExcel" class="btn">📥 Скачать Excel</button> -->
+
+<!-- Подключаем SheetJS -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
