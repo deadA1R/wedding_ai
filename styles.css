@@ -1,0 +1,668 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+
+@font-face {
+  font-family: 'Galderglynn';
+  src: url('./fonts/GalderglynnTitling-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Galderglynn';
+  src: url('./fonts/GalderglynnTitling-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Galderglynn';
+  src: url('./fonts/GalderglynnTitling-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  background: #fdfdfd;
+  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  text-align: center;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 30px 20px;
+  position: relative;
+}
+
+.thread {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  font-weight: 600;
+  margin-top: 20px;
+  line-height: 1.1;
+  color: #705c5c;
+}
+
+.names {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 85px;
+  line-height: 1.2;
+  color: #6a1e2d;
+  text-align: center;
+}
+
+.names .initial {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.2em; /* чуть больше, чем обычный текст */
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.names .bride,
+.names .groom {
+  display: block;
+}
+
+
+/* ---- Стили для фото с смещённой рамкой ---- */
+.photo-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 36px auto 8px;
+  padding: 0 12px;
+  width: 100%;
+  max-width: 740px; /* подгоняй под общий контейнер */
+}
+
+/* контейнер с рамками */
+.photo-frame {
+  position: relative;
+  width: 420px;    /* desktop ширина изображения */
+  max-width: 90%;
+  border-radius: 12px;
+  transform: translateY(0);
+  box-sizing: border-box;
+}
+
+/* Основное изображение */
+.photo-frame .portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 25px;            /* скругление самого фото */
+  object-fit: cover;
+  box-shadow: none;               /* без лишних теней (по желанию можно убрать) */
+}
+
+/* Нижняя «фонова» рамка (смещена вниз-влево) */
+.photo-frame::before {
+  content: "";
+  position: absolute;
+  left: -12px;       
+  top: 12px;          
+  width: 100%;
+  height: 100%;
+  border-radius: 29px;
+  border: 2px solid rgba(122,18,32,0.15); 
+  background: transparent;
+  z-index: 0;
+  pointer-events: none;
+  transform: rotate(-1.5deg);
+}
+
+
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  right: -20px;    
+  top: -40px;       
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  border: 3px solid var(--wine, #7a1220);
+  background: transparent;
+  z-index: 2;
+  pointer-events: none;
+  transform: rotate(1.2deg);
+  mix-blend-mode: normal;
+  opacity: 0.95;
+}
+
+.photo-frame .portrait { position: relative; z-index: 1; }
+
+@media (max-width: 720px) {
+  .photo-frame { width: 92%; max-width: 420px; }
+  .photo-frame::before { left: -8px; top: 8px; transform: rotate(-1.2deg); border-width: 1.5px; }
+  .photo-frame::after  { right: -15px; top: -10px; transform: rotate(1.3deg); border-width: 2px; }
+}
+
+.photo-frame.subtle::after {
+  border-color: rgba(122,18,32,0.6);
+  border-width: 2px;
+  opacity: 0.8;
+}
+
+
+.invite-text {
+  margin: 80px auto 0px auto;
+  padding: 30px 40px;
+  font-family: "Great Vibes";
+  font-weight: 700;
+  font-size: 48px;
+  color: #6a1e2d; /* тёплый тёмный цвет */
+  text-align: center;
+
+  animation: fadeIn 1.2s ease-out both;
+}
+
+.invite-message {
+  padding: 40px 30px;
+  position: relative;
+
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.4rem;
+  line-height: 1.3;
+  color: #3b1d24;
+  text-align: center;
+
+  animation: fadeIn 1.5s ease-out both;
+}
+
+/* Декоративные линии сверху и снизу */
+.invite-message::before,
+.invite-message::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 70%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #6a1e2d, transparent);
+  transform: translateX(-50%);
+}
+
+.invite-message::before {
+  top: 15px;
+}
+
+.invite-message::after {
+  bottom: 15px;
+}
+
+.invite-message span {
+  font-family: 'Great Vibes', serif;
+  color: #6a1e2d;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wish-block {
+  background: #6a1e2d;
+  color: #ffffff;
+  padding: 20px;
+  margin: 30px auto;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+
+.wish-block h2 {
+  font-family: 'Cormorant Garamond', cursive;
+  color: #ffecec;
+  font-size: 40px;
+  margin-bottom: 20px;
+  
+}
+
+.wish-block span {
+  font-family: 'Great Vibes', cursive;
+  font-size: 40px;
+  margin-bottom: 15px;
+  padding-right: 5px;
+    color: #ffecec;
+}
+
+.wish-block p {
+  color: #ededed;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+
+/* ---------- Countdown + Calendar ---------- */
+.countdown-calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.countdown .time {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #6a1e2d;
+}
+
+.countdown .label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #444;
+}
+
+.calendar {
+  background: #fdfaf7;
+  padding: 20px;
+  border-radius: 10px;
+  width: 320px;
+  margin: 30px auto;
+  text-align: center;
+  font-family: 'Cormorant Garamond', 'Great Vibes', ;
+  color: #6a1e2d;
+}
+
+.calendar h2 {
+  font-family: 'Cormorant Garamond', cursive;
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.calendar span {
+  font-family: 'Great Vibes', cursive;
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.weekdays, .days {
+  display: grid;
+  font-family: 'Cormorant Garamond', cursive;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.weekdays span {
+   font-family: 'Cormorant Garamond', cursive;
+  font-size: 20px;
+  font-weight: bold;
+  color: #52130c;
+}
+
+.days span {
+  color: #818181;
+  font-size: 24px;
+  padding: 8px 0;
+  position: relative;
+}
+
+.days span .wedding-day {
+  position: relative;
+  display: inline-block;
+  font-size: 36px;
+  font-family: "Great Vibes", cursive;
+  color: #6a1e2d;
+}
+
+
+
+
+/* ---------- Timeline ---------- */
+.timeline {
+  margin-top: 65px;
+  text-align: center;
+  position: relative;
+}
+
+
+.timeline h2 {
+  font-family: 'Cormorant Garamond', cursive;
+  font-size: 40px;
+  margin-bottom: 20px;
+  
+}
+
+.timeline span {
+  font-family: 'Great Vibes', cursive;
+  font-size: 40px;
+  margin-bottom: 15px;
+  padding-right: 5px;
+    color: #6a1e2d;
+}
+
+.timeline-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 300px;
+  height: 600px;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.timeline ul {
+  font-family: 'Cormorant Garamond', cursive;
+  color: #333;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.timeline li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.timeline li .time {
+  font-size: 40px;
+  font-weight: 700;
+  color: #6a1e2d;
+  margin-bottom: 6px;
+}
+
+.timeline li .event {
+  font-size: 36px;
+  font-weight: 400;
+  color: #333;
+  font-family: 'Cormorant Garamond', cursive;
+}
+
+
+/* ---------- Map ---------- */
+.map {
+  margin-top: 60px;
+  text-align: center;
+}
+
+
+.map h2 {
+  font-family: 'Cormorant Garamond', cursive;
+  font-size: 40px;
+  margin-bottom: 20px;
+  
+}
+
+.map span {
+  font-family: 'Great Vibes', cursive;
+  font-size: 40px;
+  margin-bottom: 15px;
+  padding-right: 5px;
+    color: #6a1e2d;
+}
+
+.map iframe {
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  height: 400px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+
+/* ---------- Palette ---------- */
+.palette {
+  margin: 60px auto;
+  text-align: center;
+}
+
+
+.palette  h2 {
+  font-family: 'Cormorant Garamond', cursive;
+  font-size: 40px;
+}
+
+.palette span {
+  font-family: 'Great Vibes', cursive;
+  font-size: 40px;
+  margin-bottom: 15px;
+  padding-right: 5px;
+    color: #6a1e2d;
+}
+
+.dresscode {
+  margin: 20px auto 30px;
+  padding: 30px 40px;
+ text-align: center;
+  animation: fadeIn 1.3s ease-out both;
+}
+
+.dresscode p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  line-height: 1.3;
+  color: #3b1d24;
+  margin: 0;
+  position: relative;
+}
+
+
+.dresscode::before {
+  top: 12px;
+}
+
+.dresscode::after {
+  bottom: 12px;
+}
+
+.colors {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.color {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-bottom: 25px;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.color:hover {
+  transform: scale(1.1);
+}
+
+.color::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: #333;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.color:hover::after {
+  opacity: 1;
+}
+
+
+/* ---------- RSVP ---------- */
+.rsvp {
+  margin: 80px auto;
+  text-align: center;
+  max-width: 700px;
+  padding: 0 20px;
+}
+
+.rsvp h2 {
+  font-size: 32px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.rsvp .intro {
+  font-size: 20px;
+  margin-bottom: 35px;
+  color: #555;
+}
+
+.form-group {
+  margin-bottom: 45px;
+  text-align: center;
+}
+
+.form-group h3 {
+  font-size: 20px;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Кнопка */
+.toggle-btn {
+  background-color: #6a1e2d;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 20px 0;
+  transition: background 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background-color: #8c2e3f;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.cards input[type="radio"] {
+  display: none;
+}
+
+.cards .card {
+  padding: 16px 26px;
+  border-radius: 14px;
+  border: 2px solid #ccc;
+  background: #fafafa;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  text-align: center;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+}
+
+.cards input[type="radio"]:checked + .card {
+  border-color: #6a1e2d;
+  background: #ffecec;
+  box-shadow: 0 5px 15px rgba(150,27,43,0.25);
+  color: #6a1e2d;
+  font-weight: 600;
+}
+
+select {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+  display: block;
+}
+
+button {
+  background: #6a1e2d;
+  color: white;
+  border: none;
+  padding: 15px 35px;
+  font-size: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: #6a1e2d;
+  transform: translateY(-3px);
+}
+
+
+/* ---------- Адаптив ---------- */
+@media (max-width: 768px) {
+  .names {
+    font-size: 72px;
+  }
+
+  .date {
+    font-size: 48px;
+  }
+
+  .timeline h2,
+  .map h2,
+  .palette h2,
+  .rsvp h2 {
+    font-size: 32px;
+  }
+
+  .timeline li .time {
+    font-size: 32px;
+  }
+
+  .timeline li .event {
+    font-size: 18px;
+  }
+}

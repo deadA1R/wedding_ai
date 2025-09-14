@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Админка свадьбы</title>
+  <link rel="stylesheet" href="style_admin.css">
+</head>
+<body>
+  <!-- Экран входа -->
+  <div id="login-screen" class="login-box">
+    <h2>Вход в админку</h2>
+    <input type="email" id="loginEmail" placeholder="Email">
+    <input type="password" id="loginPassword" placeholder="Пароль">
+    <button id="loginBtn">Войти</button>
+    <div id="loginError" class="error"></div>
+  </div>
+
+  <!-- Экран админки -->
+  <div id="admin-screen" class="admin-container" style="display:none;">
+    <header class="admin-header">
+      <h1>Админ-панель</h1>
+      <button id="logoutBtn" class="logout">Выйти</button>
+    </header>
+
+    <section class="admin-section">
+    <h2>Гости</h2>
+    <button id="showAddFormBtn" class="btn-add">➕ Добавить гостя</button>
+
+    <form id="addGuestForm" class="admin-form hidden">
+        <input type="text" id="firstName" placeholder="Имя" required>
+        <input type="text" id="lastName" placeholder="Фамилия" required>
+        <input type="text" id="idName" placeholder="ID (для ссылки)" required>
+
+        <!-- Пол -->
+        <select id="sex" required>
+          <option value="">Выберите пол</option>
+          <option value="Мужчина">Мужчина</option>
+          <option value="Женщина">Женщина</option>
+        </select>
+
+
+        <select id="type" required>
+        <option value="">Тип</option>
+        <option value="одиночка">Одиночка</option>
+        <option value="семьянин">Семьянин</option>
+        </select>
+
+        <div id="familyFields" class="hidden">
+        <input type="text" id="partnerFirstName" placeholder="Имя партнёра">
+        <input type="text" id="partnerLastName" placeholder="Фамилия партнёра">
+        <input type="number" id="childrenCount" min="0" value="0" placeholder="Количество детей">
+        </div>
+
+        <div class="form-actions">
+        <button type="submit">Сохранить</button>
+        <button type="button" id="cancelAdd">Отмена</button>
+        </div>
+    </form>
+    </section>
+
+    <section class="summary-section glass">
+    <h2>Сводные данные</h2>
+    <div class="summary-cards">
+        <div class="card">
+        <h3>Всего гостей</h3>
+        <p id="totalGuests">0</p>
+        </div>
+        <div class="card">
+        <h3>Подтвердили приход</h3>
+        <p id="confirmedGuests">0</p>
+        </div>
+        <div class="card">
+        <h3>Одиночки</h3>
+        <p id="singleGuests">0</p>
+        </div>
+        <div class="card">
+        <h3>Семьянины</h3>
+        <p id="familyGuests">0</p>
+        </div>
+    </div>
+
+    <canvas id="guestChart" height="150"></canvas>
+    </section>
+
+
+    <section class="guests-section">
+        <h2>Список гостей</h2>
+        <table class="guests-table">
+            <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Пол</th>
+                <th>Тип</th>
+                <th>Дети</th>
+                <th>Статус</th>
+                <th>Трансфер</th>
+                <th>Кол-во гостей</th>
+                <th>Комментарий</th>
+            </tr>
+            </thead>
+            <tbody id="guestsList">
+            <!-- данные будут подтягиваться сюда -->
+            </tbody>
+        </table>
+        </section>
+
+  </div>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="js/firebase.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

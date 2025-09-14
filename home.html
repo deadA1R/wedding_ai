@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding A+I</title>
+  <link href="styles.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+</head>
+<body>
+  <section class="hero">
+    <svg class="thread" viewBox="0 0 400 120" preserveAspectRatio="none">
+      <path d="M0,60 
+              C80,20 120,100 200,60 
+              C280,20 320,100 400,60" 
+            stroke="#6a1e2d" 
+            fill="none" 
+            stroke-width="2"/>
+      <circle cx="200" cy="60" r="8" fill="#6a1e2d"/>
+    </svg>
+
+
+    <div class="hero">
+      <div class="names">
+        <div class="bride"><span class="initial">А</span>нгелина <span class="initial">&</span></div>
+        <div class="groom"><span class="initial">И</span>лья</div>
+      </div>
+
+      <div class="photo-wrap">
+        <div class="photo-frame">
+          <img src="assets/We.JPG" alt="Ангелина и Илья" class="portrait">
+        </div>
+      </div>
+
+       <div id="invite-text" class="invite-text"></div>
+       <section class="invite-message">
+          <p>
+            Один день в этом году будет для нас особенным, и мы хотим провести его в кругу близких и друзей.
+            <br><br>
+            С большим удовольствием приглашаем вас на знаменательный праздник — <span>нашу свадьбу</span>.
+          </p>
+        </section>
+
+    </div>
+  </section>
+
+
+<div class="calendar">
+  <h2><span>Н</span>аш <span>О</span>ктябрь</h2>
+  <div class="weekdays">
+    <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+  </div>
+  <div class="days">
+    <span>20</span><span>21</span><span>22</span><span>23</span>
+    <span><div class="wedding-day">
+      24 </div> 
+    </span>
+
+    <span>25</span><span>26</span>
+    </div>
+</div>
+
+<p>А точнее ...</p>
+
+<section class="countdown">
+  <div class="count-item">
+    <div id="days" class="time">0</div>
+    <div class="label" id="days-label">дней</div>
+  </div>
+  <div class="count-item">
+    <div id="hours" class="time">0</div>
+    <div class="label" id="hours-label">часов</div>
+  </div>
+  <div class="count-item">
+    <div id="minutes" class="time">0</div>
+    <div class="label" id="minutes-label">минут</div>
+  </div>
+  <div class="count-item">
+    <div id="seconds" class="time">0</div>
+    <div class="label" id="seconds-label">секунд</div>
+  </div>
+</section>
+
+
+
+
+<section class="timeline">
+  <h2><span>Т</span>АЙМИНГ <span>Д</span>НЯ</h2>
+  <div class="timeline-wrapper">
+    <svg class="timeline-line" viewBox="0 0 120 900" preserveAspectRatio="none">
+      <path d="M 20 0 C 10 100, 50 200, 30 300 C 10 400, 50 500, 30 600 C 10 700, 50 800, 30 900 "  
+            stroke="#6a1e2d" stroke-width="1" fill="none"/>
+    </svg>
+
+    <ul>
+      <li><span class="time">15:00</span><span class="event">Сбор гостей</span></li>
+      <li><span class="time">16:00</span><span class="event">Церемония</span></li>
+      <li><span class="time">17:00</span><span class="event">Банкет</span></li>
+      <li><span class="time">21:00</span><span class="event">Торт</span></li>
+      <li><span class="time">23:00</span><span class="event">Конец...</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="wish-block">
+  <h2><span>П</span>ожелания</h2>
+  <p>
+    Мы будем рады вашей улыбке и хорошему настроению в этот день!<br><br>  
+    А если захочется порадовать нас — пусть это будет что-то полезное в конвертике ✨
+  </p>
+</div>
+
+
+
+ <section class="palette">
+  <h2><span>D</span>RESS <span>C</span>ODE</h2>
+  <section class="dresscode">
+    <p>
+    Для гармонии и красоты этого дня просим вас выбрать вечерние наряды в следующих цветах.
+    </p>
+  </section>
+  <div class="colors">
+  <div class="color" style="background:#6B8E23;" data-name="Хаки"></div>
+  <div class="color" style="background:#FF8C00;" data-name="Тыквенный"></div>
+  <div class="color" style="background:#8B4513;" data-name="Каштановый"></div>
+  <div class="color" style="background:#D2691E;" data-name="Медный"></div>
+  
+  <!-- новые -->
+  <div class="color" style="background:#6A1E2D;" data-name="Винный"></div>
+  <div class="color" style="background:#C08081;" data-name="Пудровый"></div>
+  <div class="color" style="background:#708090;" data-name="Серо-голубой"></div>
+  <div class="color" style="background:#2F4F4F;" data-name="Глубокий серый"></div>
+</div>
+
+</section>
+
+  
+  <section class="rsvp">
+    <h2>Подтверждение участия</h2>
+    <p class="intro">Нам очень важно знать, будете ли вы с нами в этот день (Нажмите кнопку)</p>
+
+     <button id="toggleFormBtn" class="toggle-btn">Анкетирование</button>
+
+    <form id="rsvpForm" class="hidden">
+      <div class="form-group">
+        <h3>Вы будете на свадьбе?</h3>
+        <div class="options cards">
+          <input type="radio" id="attend-yes" name="attendance" value="Буду" required>
+          <label for="attend-yes" class="card">Буду</label>
+          <input type="radio" id="attend-maybe" name="attendance" value="В размышлениях">
+          <label for="attend-maybe" class="card">Ещё думаю</label>
+          <input type="radio" id="attend-no" name="attendance" value="Не буду">
+          <label for="attend-no" class="card">Не смогу</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <h3>Нужен ли вам трансфер?</h3>
+        <div class="options cards">
+          <input type="radio" id="transfer-from-astana" name="transfer" value="От Астаны до Балкарагая" required>
+          <label for="transfer-from-astana" class="card">От Астаны → BalQaragai</label>
+
+          <input type="radio" id="transfer-to-astana" name="transfer" value="От Балкарагая в Астану">
+          <label for="transfer-to-astana" class="card">BalQaragai → Астана</label>
+
+          <input type="radio" id="transfer-roundtrip" name="transfer" value="В обе стороны">
+          <label for="transfer-roundtrip" class="card">В обе стороны</label>
+
+          <input type="radio" id="transfer-no" name="transfer" value="Не нужен">
+          <label for="transfer-no" class="card">Не нужен</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <h3>Сколько взрослых будет вместе с вами?</h3>
+        <select id="guests" name="guests" required>
+          <option value="1">Только я</option>
+          <option value="2">Мы вдвоём</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <h3>Сколько детей будет с вами?</h3>
+        <select id="children" name="children" required>
+          <option value="0">0</option>
+          <option value="1">1 ребёнок</option>
+          <option value="2">2 ребёнка</option>
+          <option value="3">3 ребёнка</option>
+        </select>
+      </div>
+
+      <button type="submit">Отправить ответ</button>
+    </form>
+  </section>
+
+  <section class="map">
+  <h2><span>Л</span>ОКАЦИЯ</h2>
+  <iframe src="https://yandex.kz/map-widget/v1/org/balqaragai/1164602361/?ll=71.682134%2C51.195162&z=15" 
+          width="100%" 
+          height="400" 
+          frameborder="0" 
+          allowfullscreen="true">
+  </iframe>
+</section>
+
+
+  <script src="js/script.js"></script>
+</html>
