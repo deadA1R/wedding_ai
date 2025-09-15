@@ -81,6 +81,7 @@ function renderGuest(doc) {
   const row = document.createElement("tr");
 
   row.innerHTML = `
+  <td>${data.idName}</td>
   <td>${data.firstName}</td>
   <td>${data.lastName}</td>
   <td>${data.sex}</td> <!-- здесь отображается пол -->
