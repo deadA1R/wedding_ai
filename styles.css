@@ -650,6 +650,38 @@ button:hover {
   transform: translateY(-3px);
 }
 
+.footer {
+  margin-top: 100px;
+  padding: 30px;
+  background: #6a1e2d; /* винный фон */
+  color: #ffffff;      /* белый текст */
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.footer strong {
+  color: #ffecec; /* чуть светлее для акцента */
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.footer .small {
+  display: block;
+  font-size: 12px;
+  margin-top: 6px;
+    color: #6b202f; /* пасхалка — другой оттенок винного */
+  font-style: italic;
+}
+
+.footer .gpt {
+  color: #6b202f; /* пасхалка — другой оттенок винного */
+  font-weight: bold;
+}
+
+
+
 
 /* ---------- Адаптив ---------- */
 @media (max-width: 768px) {
