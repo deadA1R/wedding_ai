@@ -225,35 +225,45 @@ body {
 .wish-block {
   background: #6a1e2d;
   color: #ffffff;
-  padding: 20px;
-  margin: 30px auto;
+  padding: 40px 20px;
+  margin: 50px auto;
   text-align: center;
   font-family: 'Georgia', serif;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  border-radius: 14px;
+  max-width: 700px;
 }
 
-
 .wish-block h2 {
-  font-family: 'Cormorant Garamond', cursive;
+  font-family: 'Cormorant Garamond', serif;
   color: #ffecec;
-  font-size: 40px;
+  font-size: 42px;
   margin-bottom: 20px;
-  
 }
 
 .wish-block span {
   font-family: 'Great Vibes', cursive;
-  font-size: 40px;
-  margin-bottom: 15px;
+  font-size: 42px;
   padding-right: 5px;
-    color: #ffecec;
+  color: #ffecec;
 }
 
 .wish-block p {
   color: #ededed;
-  font-size: 1em;
-  line-height: 1.5;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 25px;
 }
+
+.gift-note .highlight {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffecec;
+  display: block;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
 
 
 /* ---------- Countdown + Calendar ---------- */
