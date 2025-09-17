@@ -48,16 +48,28 @@ document.getElementById("toggleFormBtn").addEventListener("click", function () {
 
 function generateInviteText(guest) {
   const guestName = guest.firstName;
+  const col = guest.isColleague;
   const guestSex = guest.sex; // "Мужчина" или "Женщина"
   //const partnerName = guest.partnerFirstName ? `${guest.partnerFirstName} ${guest.partnerLastName || ""}` : null;
   const partnerName = guest.partnerFirstName;
 
-  if (partnerName) {
-    return `Дорогие ${guestName} и ${partnerName}!`;
-  } else {
-    if (guestSex === "Мужчина") return `Дорогой ${guestName}!`;
-    if (guestSex === "Женщина") return `Дорогая ${guestName}! `;
-    return `Дорогой гость ${guestName}!`;
+  if (col){
+    if (partnerName) {
+      return `Уважаемые ${guestName} и ${partnerName}!`;
+    } else {
+      if (guestSex === "Мужчина") return `Уважаемый ${guestName}!`;
+      if (guestSex === "Женщина") return `Уважаемая ${guestName}! `;
+      return `Дорогой гость ${guestName}!`;
+    }
+  } 
+  else {
+    if (partnerName) {
+      return `Дорогие ${guestName} и ${partnerName}!`;
+    } else {
+      if (guestSex === "Мужчина") return `Дорогой ${guestName}!`;
+      if (guestSex === "Женщина") return `Дорогая ${guestName}! `;
+      return `Дорогой гость ${guestName}!`;
+    }
   }
 }
 

@@ -33,6 +33,12 @@
         <input type="text" id="lastName" placeholder="Фамилия" required>
         <input type="text" id="idName" placeholder="ID (для ссылки)" required>
 
+        <label>
+          <input type="checkbox" id="isColleague">
+          Коллега
+        </label>
+
+
         <!-- Пол -->
         <select id="sex" required>
           <option value="">Выберите пол</option>
@@ -104,6 +110,9 @@
                 <th>Трансфер</th>
                 <th>Кол-во гостей</th>
                 <th>Комментарий</th>
+                <th>Коллега</th> <!-- новый столбец -->
+                <th>Действия</th>
+                
             </tr>
             </thead>
             <tbody id="guestsList">
