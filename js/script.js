@@ -113,6 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = doc.data();
       inviteTextEl.textContent = generateInviteText(data);
 
+      if (data.isColleague) {
+        const childrenBlock = document.getElementById("children-block");
+        if (childrenBlock) childrenBlock.style.display = "none";
+      }
+
       // Предзаполнение формы
       if (data.status) {
         const attendInput = document.querySelector(`#rsvpForm input[name="attendance"][value="${data.status}"]`);

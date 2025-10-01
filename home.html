@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wedding A+I</title>
   <link rel="icon" type="image/x-icon" href="./assets/fac.ico">
-  <link href="styles.css?v=2.0.0" rel="stylesheet" />
+  <link href="styles.css?v=2.0.2" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
@@ -32,7 +32,7 @@
 
       <div class="photo-wrap">
         <div class="photo-frame">
-          <img src="assets/prewed-121.jpg" alt="Ангелина и Илья" class="portrait">
+          <img src="assets/prewed-113.jpg" alt="Ангелина и Илья" class="portrait">
         </div>
       </div>
 
@@ -130,28 +130,27 @@
     <br><strong>Белый цвет — особенный и предназначен только для <span>невесты</span></strong>
     </p>
   </section>
-  <div class="colors">
-    <!-- зелёные -->
-    <div class="color" style="background:#013220;" data-name="Глубокий зелёный"></div>
-    <!-- <div class="color" style="background:#228B22;" data-name="Лесной зелёный"></div> -->
-    <div class="color" style="background:#6B8E23;" data-name="Оливковый"></div>
+ <div class="colors">
+  <!-- зелёные -->
+  <div class="color" style="background:#013220;" data-name="Глубокий зелёный"></div>
+  <div class="color" style="background:#6B8E23;" data-name="Оливковый"></div>
+  <div class="color" style="background:#556B2F;" data-name="Тёмный оливковый"></div>
+  <div class="color" style="background:#3D5229;" data-name="Хвойный зелёный"></div>
 
-    <!-- коричневые и медные -->
-    <div class="color" style="background:#8B4513;" data-name="Каштановый"></div>
-    <div class="color" style="background:#A0522D;" data-name="Терракотовый"></div>
-    <div class="color" style="background:#D2691E;" data-name="Медный"></div>
+  <!-- коричневые и медные -->
+  <div class="color" style="background:#8B4513;" data-name="Каштановый"></div>
+  <div class="color" style="background:#A0522D;" data-name="Терракотовый"></div>
+  <div class="color" style="background:#D2691E;" data-name="Медный"></div>
 
-    <!-- винные и тёплые -->
-    <div class="color" style="background:#6A1E2D;" data-name="Винный"></div>
-    <!-- <div class="color" style="background:#800000;" data-name="Бордовый"></div>
-    <div class="color" style="background:#C08081;" data-name="Пудровый розовый"></div> -->
+  <!-- винные и тёплые -->
+  <div class="color" style="background:#6A1E2D;" data-name="Винный"></div>
+  <div class="color" style="background:#800000;" data-name="Бордовый"></div>
 
-    <!-- акценты -->
-    <!-- <div class="color" style="background:#FF8C00;" data-name="Тыквенный"></div> -->
-    <div class="color" style="background:#131936" data-name="Neon Navy"></div>
-    <div class="color" style="background:#708090;" data-name="Серо-голубой"></div>
-        <div class="color" style="background:#161616;" data-name="Черный"></div>
-  </div>
+  <!-- акценты -->
+  <div class="color" style="background:#708090;" data-name="Серо-голубой"></div>
+  <div class="color" style="background:#161616;" data-name="Черный"></div>
+</div>
+
 
 </section>
 
@@ -201,7 +200,7 @@
         </select>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" id="children-block">
         <h3>Сколько детей будет с вами?</h3>
         <select id="children" name="children" required>
           <option value="0">0</option>
@@ -210,6 +209,7 @@
           <option value="3">3 ребёнка</option>
         </select>
       </div>
+
 
       <button type="submit">Отправить ответ</button>
     </form>
@@ -234,5 +234,5 @@
 </section>
 
 
-  <script src="js/script.js?v=1.1.0"></script>
+  <script src="js/script.js?v=2.0.2"></script>
 </html>
