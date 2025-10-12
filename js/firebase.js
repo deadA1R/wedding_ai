@@ -183,34 +183,52 @@ function updateSummary(guests) {
   let single = 0;
   let family = 0;
   let totalChildren = 0;
+  let colleagueCount = 0;
+  let transferCount = 0;
+
 
   guests.forEach(g => {
     const adults = g.guestsCount || 0;
     const children = g.childrenCount || 0;
     const guestCount = adults + children;
+    const colleagueGuestsEl = g.colleagueGuests || 0;
+    const transferGuestsEl = g.transferCount || 0;
+
 
     total += guestCount;
     totalChildren += children;
 
-    if (g.status === 'подтвердил' || g.status === 'Буду') {
-      confirmed += guestCount;
-      confirmedChild += children;
-      confirmedAdult += adults;
-    }
+      if (g.status === 'подтвердил' || g.status === 'Буду') {
+        confirmed += guestCount;
+        confirmedChild += children;
+        confirmedAdult += adults;
 
-    if (g.status === 'Не буду') {
-      canAdult += adults + children;
-    }
+        // ✅ считаем только подтверждённых коллег
+        if (g.isColleague) {
+          colleagueCount += (g.guestsCount || 1) + (g.childrenCount || 0);
+        }
 
-    if (g.status === 'В размышлениях') {
-      thinkAdult += adults + children;
-    }
+        // ✅ считаем только подтверждённых с трансфером
+        if (g.transfer) {
+          transferCount += (g.guestsCount || 1) + (g.childrenCount || 0);
+        }
+      }
 
-    if (g.type === 'одиночка') {
-      single += guestCount;
-    } else if (g.type === 'семьянин') {
-      family += guestCount;
-    }
+      if (g.status === 'Не буду') {
+        canAdult += adults + children;
+      }
+
+      if (g.status === 'В размышлениях') {
+        thinkAdult += adults + children;
+      }
+
+      if (g.type === 'одиночка') {
+        single += guestCount;
+      } else if (g.type === 'семьянин') {
+        family += guestCount;
+      }
+
+
   });
 
   totalGuestsEl.innerText = total;
@@ -218,6 +236,9 @@ function updateSummary(guests) {
   confirmedChildEl.innerText = confirmedChild;
   singleGuestsEl.innerText = single;
   familyGuestsEl.innerText = family;
+  colleagueGuestsEl.innerText = colleagueCount;
+  transferGuestsEl.innerText = transferCount;
+
 
   if (guestChart) guestChart.destroy();
 
